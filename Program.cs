@@ -16,16 +16,11 @@ namespace Ivory.TesteEstagio.CampoMinado
             Console.SetCursorPosition(0, 2);
             int cursorX = 1;
             int cursorY = 1;
-            Console.BackgroundColor = ConsoleColor.White;
-            Console.ForegroundColor = ConsoleColor.Black;
-            //Console.CursorVisible = false;
 
             ConsoleKeyInfo pressioneTecla;
             do
             {
                 pressioneTecla = Console.ReadKey(true);
-                //verificar setas
-                //verificar se jogador ganhou, perdeu ou continua.
                 switch (pressioneTecla.Key)
                 {
                     case ConsoleKey.UpArrow:
@@ -52,11 +47,11 @@ namespace Ivory.TesteEstagio.CampoMinado
                             cursorX--;
                         }
                         break;
+
                     default:
                         break;
                 }
                 Console.SetCursorPosition(cursorX, cursorY);
-                Console.Write("A");
             }
             while (pressioneTecla.Key != ConsoleKey.Enter);
         }
