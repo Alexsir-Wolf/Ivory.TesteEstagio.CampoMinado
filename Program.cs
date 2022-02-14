@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Ivory.TesteEstagio.CampoMinado
 {
@@ -12,15 +12,18 @@ namespace Ivory.TesteEstagio.CampoMinado
 
             // Realize sua codificação a partir deste ponto, boa sorte!
 
-
             Console.SetCursorPosition(0, 2);
             int cursorX = 1;
             int cursorY = 1;
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Black;
 
             ConsoleKeyInfo pressioneTecla;
             do
             {
                 pressioneTecla = Console.ReadKey(true);
+                //verificar setas
+
                 switch (pressioneTecla.Key)
                 {
                     case ConsoleKey.UpArrow:
@@ -47,7 +50,6 @@ namespace Ivory.TesteEstagio.CampoMinado
                             cursorX--;
                         }
                         break;
-
                     default:
                         break;
                 }
