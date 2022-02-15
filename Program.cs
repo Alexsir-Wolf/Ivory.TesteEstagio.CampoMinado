@@ -13,8 +13,7 @@ namespace Ivory.TesteEstagio.CampoMinado
 
             // Realize sua codificação a partir deste ponto, boa sorte!
 
-
-            while (campoMinado.JogoStatus == campoMinado.JogoStatus)
+            while (campoMinado.JogoStatus == 0)
             {
                 //PEGA A POSIÇÃO DA JOGADA
                 Console.WriteLine("Digite a linha (1 á 9):");
