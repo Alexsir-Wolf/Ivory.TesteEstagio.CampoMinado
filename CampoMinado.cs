@@ -2,7 +2,7 @@
 {
     public class CampoMinado
     {
-        private enum StatusTipo
+        public enum StatusTipo
         {
             Aberto,
             Vitoria,

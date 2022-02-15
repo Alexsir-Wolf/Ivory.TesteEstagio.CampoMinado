@@ -1,4 +1,5 @@
 using System;
+using static Ivory.TesteEstagio.CampoMinado.CampoMinado;
 
 namespace Ivory.TesteEstagio.CampoMinado
 {
@@ -11,51 +12,45 @@ namespace Ivory.TesteEstagio.CampoMinado
             Console.WriteLine(campoMinado.Tabuleiro);
 
             // Realize sua codificação a partir deste ponto, boa sorte!
-            Console.SetCursorPosition(0, 0);
-            int cursorX = 1;
-            int cursorY = 1;
-            Console.BackgroundColor = ConsoleColor.White;
-            Console.ForegroundColor = ConsoleColor.Black;
 
-            ConsoleKeyInfo pressioneTecla;
-            do
+            while (campoMinado.JogoStatus == (int)StatusTipo.Aberto)
             {
-                pressioneTecla = Console.ReadKey(true);
-                switch (pressioneTecla.Key)
+                Console.WriteLine("Digite a linha (1 á 9):");
+                int linha = int.Parse(Console.ReadLine());
+                if(linha > 9)
                 {
-                    case ConsoleKey.UpArrow:
-                        if (cursorY > 0)
-                        {
-                            cursorY--;
-                        }
-                        break;
-                    case ConsoleKey.DownArrow:
-                        if (cursorY < 8)
-                        {
-                            cursorY++;
-                        }
-                        break;
-                    case ConsoleKey.RightArrow:
-                        if (cursorX < 8)
-                        {
-                            cursorX++;
-                        }
-                        break;
-                    case ConsoleKey.LeftArrow:
-                        if (cursorX > 0)
-                        {
-                            cursorX--;
-                        }
-                        break;
-                    case ConsoleKey.Spacebar:
-                        campoMinado.Abrir(cursorX, cursorY);
-                        break;
-                    default:
-                        break;
+                    Console.WriteLine("Fora do tabuleiro, tente outra vez: (1 á 9)");
+                    linha = int.Parse(Console.ReadLine());
                 }
-                Console.SetCursorPosition(cursorX, cursorY);
+
+                Console.WriteLine("Digite a coluna (1 á 9):");
+                int coluna = int.Parse(Console.ReadLine());
+                if (coluna > 9)
+                {
+                    Console.WriteLine("Fora do tabuleiro, tente outra vez: (1 á 9)");
+                    coluna = int.Parse(Console.ReadLine());
+                }
+
+                campoMinado.Abrir(linha, coluna);
+                Console.Clear();
+                Console.WriteLine(campoMinado.Tabuleiro);
+
+                if(campoMinado.JogoStatus == (int)StatusTipo.Aberto)
+                {
+                    Console.WriteLine("Campo aberto, continue:");
+                }
+                if (campoMinado.JogoStatus == (int)StatusTipo.Vitoria)
+                {
+                    Console.WriteLine("========VITÓRIA========");
+                }                    
+                if (campoMinado.JogoStatus == (int)StatusTipo.GameOver)
+                {
+                    Console.WriteLine("========BOOOM!!========");
+                    Console.WriteLine("=VOCE ACHOU UMA BOMBA!=");
+                    Console.WriteLine("======FIM DE JOGO======");
+                }
+                    
             }
-            while (pressioneTecla.Key != ConsoleKey.Enter);
         }
     }
 }
