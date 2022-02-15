@@ -7,12 +7,11 @@ namespace Ivory.TesteEstagio.CampoMinado
         static void Main(string[] args)
         {
             var campoMinado = new CampoMinado();
-            Console.WriteLine("Início do jogo\n=========");
+            //Console.WriteLine("Início do jogo\n=========");
             Console.WriteLine(campoMinado.Tabuleiro);
 
             // Realize sua codificação a partir deste ponto, boa sorte!
-
-            Console.SetCursorPosition(0, 2);
+            Console.SetCursorPosition(0, 0);
             int cursorX = 1;
             int cursorY = 1;
             Console.BackgroundColor = ConsoleColor.White;
@@ -22,22 +21,20 @@ namespace Ivory.TesteEstagio.CampoMinado
             do
             {
                 pressioneTecla = Console.ReadKey(true);
-                //verificar setas
-
                 switch (pressioneTecla.Key)
                 {
                     case ConsoleKey.UpArrow:
-                        if (cursorY > 2)
+                        if (cursorY > 0)
                         {
                             cursorY--;
                         }
                         break;
                     case ConsoleKey.DownArrow:
-                        if (cursorY < 10)
+                        if (cursorY < 8)
                         {
                             cursorY++;
                         }
-                        break; 
+                        break;
                     case ConsoleKey.RightArrow:
                         if (cursorX < 8)
                         {
@@ -49,6 +46,9 @@ namespace Ivory.TesteEstagio.CampoMinado
                         {
                             cursorX--;
                         }
+                        break;
+                    case ConsoleKey.Spacebar:
+                        campoMinado.Abrir(cursorX, cursorY);
                         break;
                     default:
                         break;
