@@ -16,6 +16,7 @@ namespace Ivory.TesteEstagio.CampoMinado
 
             while (campoMinado.JogoStatus == campoMinado.JogoStatus)
             {
+                //PEGA A POSIÇÃO DA JOGADA
                 Console.WriteLine("Digite a linha (1 á 9):");
                 int linha = int.Parse(Console.ReadLine());
                 while (linha > 9)
@@ -32,17 +33,16 @@ namespace Ivory.TesteEstagio.CampoMinado
                     coluna = int.Parse(Console.ReadLine());
                 }
 
-                //ABRE POSIÇÃO
+                //ABRE POSIÇÃO, RETORNA TABULEIRO COM POSIÇÃO ABERTA
                 campoMinado.Abrir(linha, coluna);
                 Console.Clear();
                 Console.WriteLine("Início do jogo\n=========");
                 Console.WriteLine($"{campoMinado.Tabuleiro}\n");
 
                 //DEFINE STATUS DA JOGADA
-                //Aberto,
-                //Vitoria,
-                //GameOver               
-
+                //ABERTO = 0
+                //VITORIA = 1
+                //GAMEOVER = 2        
                 if (campoMinado.JogoStatus == 0)
                 {
                     Console.WriteLine("Campo aberto, continue:");
