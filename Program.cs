@@ -8,16 +8,17 @@ namespace Ivory.TesteEstagio.CampoMinado
         static void Main(string[] args)
         {
             var campoMinado = new CampoMinado();
-            //Console.WriteLine("Início do jogo\n=========");
-            Console.WriteLine(campoMinado.Tabuleiro);
+            Console.WriteLine("Início do jogo\n=========");
+            Console.WriteLine($"{campoMinado.Tabuleiro}\n");
 
             // Realize sua codificação a partir deste ponto, boa sorte!
 
-            while (campoMinado.JogoStatus == (int)StatusTipo.Aberto)
+
+            while (campoMinado.JogoStatus == campoMinado.JogoStatus)
             {
                 Console.WriteLine("Digite a linha (1 á 9):");
                 int linha = int.Parse(Console.ReadLine());
-                if(linha > 9)
+                while (linha > 9)
                 {
                     Console.WriteLine("Fora do tabuleiro, tente outra vez: (1 á 9)");
                     linha = int.Parse(Console.ReadLine());
@@ -25,31 +26,39 @@ namespace Ivory.TesteEstagio.CampoMinado
 
                 Console.WriteLine("Digite a coluna (1 á 9):");
                 int coluna = int.Parse(Console.ReadLine());
-                if (coluna > 9)
+                while (coluna > 9)
                 {
                     Console.WriteLine("Fora do tabuleiro, tente outra vez: (1 á 9)");
                     coluna = int.Parse(Console.ReadLine());
                 }
 
+                //ABRE POSIÇÃO
                 campoMinado.Abrir(linha, coluna);
                 Console.Clear();
-                Console.WriteLine(campoMinado.Tabuleiro);
+                Console.WriteLine("Início do jogo\n=========");
+                Console.WriteLine($"{campoMinado.Tabuleiro}\n");
 
-                if(campoMinado.JogoStatus == (int)StatusTipo.Aberto)
+                //DEFINE STATUS DA JOGADA
+                //Aberto,
+                //Vitoria,
+                //GameOver               
+
+                if (campoMinado.JogoStatus == 0)
                 {
                     Console.WriteLine("Campo aberto, continue:");
                 }
-                if (campoMinado.JogoStatus == (int)StatusTipo.Vitoria)
+                else if (campoMinado.JogoStatus == 1)
                 {
                     Console.WriteLine("========VITÓRIA========");
-                }                    
-                if (campoMinado.JogoStatus == (int)StatusTipo.GameOver)
+                    break;
+                }
+                else if (campoMinado.JogoStatus == 2)
                 {
                     Console.WriteLine("========BOOOM!!========");
                     Console.WriteLine("=VOCE ACHOU UMA BOMBA!=");
                     Console.WriteLine("======FIM DE JOGO======");
+                    break;
                 }
-                    
             }
         }
     }
